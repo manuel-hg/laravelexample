@@ -11,7 +11,13 @@ class CreateNotesTable extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up() {
+        Schema::table('notes', function(Blueprint $table){
+            $table->string('autor');
+            $table->dropColumn('example7');
+        });
+    }
+    /*public function up()
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->engine = 'InnoDB';
@@ -30,7 +36,7 @@ class CreateNotesTable extends Migration
             $table->enum('estado', array('publicado', 'eliminado', 'borrador'));
             $table->timestamps();
         });
-    }
+    }*/
 
     /**
      * Reverse the migrations.
@@ -39,6 +45,7 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notes');
+        Schema::dropColumn('example7');
+        //Schema::dropIfExists('notes');
     }
 }
